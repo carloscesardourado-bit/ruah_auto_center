@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUAH Auto Center | Oficina Especializada em Caminhonetes de Alto Padrão</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ruahDark: '#07090e',
+                        ruahCard: '#0f141f',
+                        ruahBorder: '#1e293b',
+                        ruahBlue: '#1e40af', // Deep rich royal blue from the brand identity
+                        ruahBlueBright: '#3b82f6', // Electric highlight blue
+                        ruahBlueGlow: 'rgba(59, 130, 246, 0.25)',
+                        ruahGold: '#d4af37',
+                        ruahGoldHover: '#b3922f'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #07090e;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glow-blue {
+            box-shadow: 0 0 30px rgba(30, 64, 175, 0.35);
+        }
+        .glow-blue-hover:hover {
+            box-shadow: 0 0 45px rgba(59, 130, 246, 0.5);
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+        .glass-card {
+            background: rgba(15, 20, 31, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 30%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-ruahDark text-gray-100 antialiased selection:bg-ruahBlueBright selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-ruahBorder transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ruahBlue to-black p-0.5 border border-ruahBlueBright/50 flex items-center justify-center group-hover:border-ruahBlueBright transition shadow-lg">
+                    <span class="text-white font-black text-xl tracking-tighter">R</span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xl font-black tracking-wider text-white">RUAH</span>
+                        <span class="w-2 h-2 rounded-full bg-ruahBlueBright animate-pulse"></span>
+                    </div>
+                    <span class="block text-[10px] tracking-[0.25em] text-ruahBlueBright uppercase font-bold">Auto Center</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#inicio" class="hover:text-ruahBlueBright transition">Início</a>
+                <a href="#diferenciais" class="hover:text-ruahBlueBright transition">Excelência</a>
+                <a href="#servicos" class="hover:text-ruahBlueBright transition">Serviços Premium</a>
+                <a href="#frota" class="hover:text-ruahBlueBright transition">Caminhonetes</a>
+                <a href="#experiencia" class="hover:text-ruahBlueBright transition">Experiência VIP</a>
+                <a href="#contato" class="hover:text-ruahBlueBright transition">Localização</a>
+            </nav>
+
+            <!-- CTA WhatsApp Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento%20VIP%20para%20minha%20caminhonete%20na%20RUAH%20Auto%20Center." target="_blank" class="bg-gradient-to-r from-ruahBlue to-ruahBlueBright text-white font-bold px-5 py-2.5 rounded-xl shadow-lg glow-blue glow-blue-hover transition-all flex items-center gap-2 text-sm border border-ruahBlueBright/40">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Agendar Atendimento</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-ruahBlueBright focus:outline-none text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-ruahBorder px-6 py-5 space-y-4">
+            <a href="#inicio" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Início</a>
+            <a href="#diferenciais" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Excelência</a>
+            <a href="#servicos" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Serviços Premium</a>
+            <a href="#frota" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Caminhonetes</a>
+            <a href="#experiencia" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Experiência VIP</a>
+            <a href="#contato" class="block text-gray-200 hover:text-ruahBlueBright font-medium">Localização</a>
+            <div class="pt-2">
+                <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento%20VIP%20para%20minha%20caminhonete%20na%20RUAH%20Auto%20Center." target="_blank" class="w-full bg-ruahBlueBright text-white font-bold px-4 py-3 rounded-xl flex items-center justify-center gap-2 text-center shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Atendimento WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden">
+        <!-- Background Luxury Blue & Dark Ambience -->
+        <div class="absolute inset-0 z-0 opacity-50 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-ruahBlue/30 via-ruahDark to-black"></div>
+        <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-ruahDark via-transparent to-ruahDark"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center lg:text-left grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ruahBlue/20 border border-ruahBlueBright/40 text-ruahBlueBright text-xs font-semibold tracking-wider uppercase shadow-inner">
+                    <i class="fa-solid fa-shield-halved"></i> Centro Automotivo High-End para Picapes
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none text-white">
+                    QUALIDADE, CONFIANÇA E PERFORMANCE EM CADA <span class="text-gradient">DETALHE.</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 font-light max-w-2xl mx-auto lg:mx-0">
+                    O centro automotivo de elite para proprietários exigentes que buscam tecnologia de ponta, atendimento exclusivo e cuidado minucioso com a sua caminhonete.
+                </p>
+                
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento%20VIP%20para%20minha%20caminhonete." target="_blank" class="w-full sm:w-auto bg-gradient-to-r from-ruahBlue to-ruahBlueBright text-white font-bold px-8 py-4 rounded-xl shadow-xl glow-blue glow-blue-hover transition-all flex items-center justify-center gap-3 text-base border border-ruahBlueBright/50">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Falar com Consultor VIP</span>
+                    </a>
+                    <a href="#servicos" class="w-full sm:w-auto glass-card hover:border-ruahBlueBright text-white font-semibold px-8 py-4 rounded-xl transition flex items-center justify-center gap-2 text-base">
+                        <span>Nossos Serviços</span>
+                        <i class="fa-solid fa-arrow-right text-sm text-ruahBlueBright"></i>
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-ruahBorder/80 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <p class="text-2xl font-black text-ruahBlueBright">+15 Anos</p>
+                        <p class="text-xs text-gray-400">Tradição & Expertise</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-black text-white">100%</p>
+                        <p class="text-xs text-gray-400">Garantia & Rigor</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-black text-ruahBlueBright">VIP</p>
+                        <p class="text-xs text-gray-400">Atendimento Exclusivo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Badge / Logo Card Showcase -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <!-- Glowing Background Effect -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-ruahBlue to-ruahBlueBright rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+                    
+                    <div class="relative glass-card p-8 rounded-3xl border border-ruahBlue/40 shadow-2xl text-center space-y-6">
+                        <div class="w-36 h-36 mx-auto bg-black/70 rounded-2xl p-4 border border-ruahBlueBright/50 flex items-center justify-center shadow-inner">
+                            <!-- SVG Representation of the Brand Shield & Eagle Logo -->
+                            <svg viewBox="0 0 500 500" class="w-full h-full text-white fill-current">
+                                <path d="M250 30 C300 80, 420 70, 450 120 C450 220, 420 350, 250 470 C80 350, 50 220, 50 120 C80 70, 200 80, 250 30 Z" fill="none" stroke="#3b82f6" stroke-width="14"/>
+                                <path d="M150 150 Q250 50 350 150 Q300 120 250 170 Q200 120 150 150 Z" fill="currentColor"/>
+                                <text x="250" y="320" font-family="sans-serif" font-weight="900" font-size="55" text-anchor="middle" letter-spacing="4" fill="currentColor">RUAH</text>
+                                <text x="250" y="360" font-family="sans-serif" font-weight="600" font-size="16" text-anchor="middle" letter-spacing="8" fill="#3b82f6">AUTO CENTER</text>
+                            </svg>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">SEU VEÍCULO EM BOAS MÃOS</h3>
+                            <p class="text-xs text-gray-400">Especialistas em picapes nacionais e importadas de alto padrão (Amarok, Hilux, RAM, Ranger, S10).</p>
+                        </div>
+                        <div class="pt-4 border-t border-ruahBorder flex justify-between items-center text-xs text-gray-400">
+                            <span><i class="fa-solid fa-location-dot text-ruahBlueBright mr-1"></i> Setor Padre Pelágio - Goianira/GO</span>
+                            <span class="text-ruahBlueBright font-semibold">High-End</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="diferenciais" class="py-20 bg-black/50 border-y border-ruahBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Pilares de Excelência</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">MAIS QUE UM SERVIÇO, É CONFIANÇA EM CADA DETALHE.</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Desenvolvido sob medida para proprietários que valorizam alto desempenho, rigor técnico e sofisticação.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Pillar 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-ruahBlueBright transition group">
+                    <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 border border-ruahBlueBright/30 text-ruahBlueBright flex items-center justify-center text-2xl mb-6 group-hover:bg-ruahBlue group-hover:text-white transition shadow-md">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Qualidade em Cada Serviço</h3>
+                    <p class="text-sm text-gray-400">Peças genuínas, rigor técnico e padrões de montagem de fábrica para máxima durabilidade e segurança.</p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-ruahBlueBright transition group">
+                    <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 border border-ruahBlueBright/30 text-ruahBlueBright flex items-center justify-center text-2xl mb-6 group-hover:bg-ruahBlue group-hover:text-white transition shadow-md">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Agilidade para Seguir em Frente</h3>
+                    <p class="text-sm text-gray-400">Diagnóstico computadorizado de alta precisão para entregas rápidas, eficientes e sem retrabalho.</p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-ruahBlueBright transition group">
+                    <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 border border-ruahBlueBright/30 text-ruahBlueBright flex items-center justify-center text-2xl mb-6 group-hover:bg-ruahBlue group-hover:text-white transition shadow-md">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Confiança que Você Sente</h3>
+                    <p class="text-sm text-gray-400">Transparência total em orçamentos, histórico digital do veículo e consultoria técnica dedicada.</p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-ruahBlueBright transition group">
+                    <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 border border-ruahBlueBright/30 text-ruahBlueBright flex items-center justify-center text-2xl mb-6 group-hover:bg-ruahBlue group-hover:text-white transition shadow-md">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Performance para o seu Veículo</h3>
+                    <p class="text-sm text-gray-400">Ajustes finos de motor diesel/gasolina, suspensão reforçada e otimização para picapes pesadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="space-y-4 max-w-2xl">
+                <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Portfólio Automotivo</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">SERVIÇOS DE ELITE PARA CAMINHONETES</h2>
+                <p class="text-gray-400 text-base">Tecnologia avançada e maquinário de última geração para cuidar da sua picape com o máximo requinte.</p>
+            </div>
+            <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20consultar%20orçamento%20para%20serviço%20especializado." target="_blank" class="self-start md:self-auto glass-card hover:border-ruahBlueBright px-6 py-3 rounded-xl text-white font-semibold text-sm transition flex items-center gap-2">
+                <span>Orçamento via WhatsApp</span>
+                <i class="fa-solid fa-chevron-right text-xs text-ruahBlueBright"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Mecânica Geral & Motores</h3>
+                    <p class="text-sm text-gray-400">Manutenção preventiva e corretiva de motores diesel e gasolina, injeção direta e sistemas de alta performance.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Peças Genuínas</span>
+                    <span class="text-ruahBlueBright font-semibold">Alta Precisão</span>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Diagnóstico Eletrônico Avançado</h3>
+                    <p class="text-sm text-gray-400">Scanners de última geração para leitura de centrais (ECU), reset de módulos, calibração de sensores e painéis digitais.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Scanner de Fábrica</span>
+                    <span class="text-ruahBlueBright font-semibold">Tecnologia Top</span>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-oil-can"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Troca de Óleo & Fluidos VIP</h3>
+                    <p class="text-sm text-gray-400">Óleos sintéticos homologados pelas montadoras, troca especializada de fluidos de câmbio automático e diferenciais.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Óleo Homologado</span>
+                    <span class="text-ruahBlueBright font-semibold">Certificado</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Ar-Condicionado Automotivo</h3>
+                    <p class="text-sm text-gray-400">Higienização hospitalar com ozônio, recarga de gás ecológica, manutenção de compressores e climatização digital.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Ozônio & Limpeza</span>
+                    <span class="text-ruahBlueBright font-semibold">Conforto Total</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-car-burst"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Suspensão & Alinhamento 3D</h3>
+                    <p class="text-sm text-gray-400">Ajuste milimétrico de suspensão para picapes pesadas, amortecedores especiais, alinhamento e balanceamento computadorizado.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Alinhamento 3D</span>
+                    <span class="text-ruahBlueBright font-semibold">Estabilidade</span>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl font-bold border border-ruahBlueBright/30">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-ruahBlueBright transition">Revisão Preventiva Completa</h3>
+                    <p class="text-sm text-gray-400">Checklist de 50+ itens para viagens longas ou uso severo urbano/rural, garantindo zero dor de cabeça na estrada.</p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-ruahBorder/80 flex items-center justify-between text-xs text-gray-400">
+                    <span><i class="fa-solid fa-check text-ruahBlueBright mr-1"></i> Checklist VIP</span>
+                    <span class="text-ruahBlueBright font-semibold">Segurança Máxima</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="frota" class="py-24 bg-gradient-to-b from-ruahDark to-black border-t border-ruahBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Especialistas em Picapes</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white">O CUIDADO QUE SUA AMAROK E OUTRAS PICAPES MERECEM.</h2>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Caminhonetes modernas exigem ferramental específico, conhecimento profundo de eletrônica embarcada e torque adequado. Na <strong class="text-white">RUAH Auto Center</strong>, entendemos a força e a sofisticação da sua picape.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">Volkswagen Amarok</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">Toyota Hilux</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">Ford Ranger</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">RAM 1500 / 2500</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">Chevrolet S10</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-ruahBlueBright"></i>
+                            <span class="text-sm font-medium text-gray-200">Mitsubishi L200</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="https://wa.me/5562994153486?text=Olá,%20tenho%20uma%20caminhonete%20e%20gostaria%20de%20agendar%20diagnóstico." target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-ruahBlue to-ruahBlueBright text-white font-bold px-7 py-3.5 rounded-xl shadow-lg glow-blue transition border border-ruahBlueBright/40">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Agendar Avaliação da Picape</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Feature Image Card -->
+                <div class="relative">
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-ruahBlue to-ruahBlueBright rounded-3xl blur-2xl opacity-20"></div>
+                    <div class="relative glass-card p-6 rounded-3xl border border-ruahBlue/40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80" alt="Amarok Highline na Oficina" class="w-full h-80 object-cover rounded-2xl mb-6 shadow-md">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs uppercase tracking-widest text-ruahBlueBright font-bold">Padrão Concessionária</span>
+                                <span class="text-xs bg-ruahBorder px-3 py-1 rounded-full text-gray-300">Alta Performance</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Ambiente Equipado & Equipe Certificada</h3>
+                            <p class="text-sm text-gray-400">Cada parafuso apertado com torquímetro calibrado, elevadores reforçados para picapes pesadas e organização impecável.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Storyboards & Atendimento VIP</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">EXCELÊNCIA REFLETIDA EM CADA DETALHE</h2>
+            <p class="text-gray-400">Conheça nosso padrão de atendimento exclusivo, desenvolvido para clientes que não abrem mão de sofisticação.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition space-y-6">
+                <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-2xl border border-ruahBlueBright/30">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Cartão de Visita VIP</h3>
+                    <p class="text-sm text-gray-400">Nossa identidade visual em cada conexão. Tenha sempre em mãos os contatos diretos da nossa equipe técnica e consultores.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition space-y-6">
+                <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-2xl border border-ruahBlueBright/30">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Xícara Personalizada</h3>
+                    <p class="text-sm text-gray-400">Até nos pequenos detalhes a qualidade se faz presente. Desfrute de um café espresso exclusivo em nossa sala de espera executiva.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-8 rounded-2xl border border-ruahBorder hover:border-ruahBlueBright transition space-y-6">
+                <div class="w-14 h-14 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-2xl border border-ruahBlueBright/30">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Uniformes Bordados</h3>
+                    <p class="text-sm text-gray-400">Nossa equipe veste o brasão da excelência. Profissionalismo e orgulho em cada colaborador que atende sua picape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black/40 border-t border-ruahBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Depoimentos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">O QUE DIZEM NOSSOS CLIENTES VIP</h2>
+                <p class="text-gray-400">Aprovado por proprietários exigentes de Goianira e região metropolitana.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="glass-card p-8 rounded-2xl border border-ruahBorder space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"Lugar impecável! Levei minha Amarok Highline para revisão completa e troca de óleo do câmbio. Atendimento diferenciado, pontualidade e transparência total."</p>
+                    </div>
+                    <div class="pt-4 border-t border-ruahBorder flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-ruahBlue/30 text-ruahBlueBright font-bold flex items-center justify-center border border-ruahBlueBright/40">RM</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Dr. Rodrigo Mendonça</p>
+                            <p class="text-xs text-gray-400">Proprietário de Amarok</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-8 rounded-2xl border border-ruahBorder space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"Finalmente encontrei uma oficina que entende de caminhonetes de verdade em Goianira. O diagnóstico eletrônico foi certeiro e o preço é justo pela qualidade."</p>
+                    </div>
+                    <div class="pt-4 border-t border-ruahBorder flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-ruahBlue/30 text-ruahBlueBright font-bold flex items-center justify-center border border-ruahBlueBright/40">CS</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Carlos Silveira</p>
+                            <p class="text-xs text-gray-400">Empresário do Agronegócio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-8 rounded-2xl border border-ruahBorder space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"Profissionalismo exemplar! Sala de espera confortável, café excelente na xícara personalizada e minha RAM ficou perfeita. Recomendo demais!"</p>
+                    </div>
+                    <div class="pt-4 border-t border-ruahBorder flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-ruahBlue/30 text-ruahBlueBright font-bold flex items-center justify-center border border-ruahBlueBright/40">FA</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Felipe Arantes</p>
+                            <p class="text-xs text-gray-400">Proprietário de RAM 2500</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-black/70 border-t border-ruahBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-ruahBlueBright uppercase tracking-widest text-xs font-bold">Atendimento & Localização</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white">AGENDE SEU HORÁRIO VIP</h2>
+                        <p class="text-gray-300 text-base">Entre em contato agora mesmo via WhatsApp ou visite nossa sede. Teremos o prazer de cuidar da sua picape.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Contact Item 1 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl shrink-0 border border-ruahBlueBright/30">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">WhatsApp Oficial</h3>
+                                <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento%20na%20RUAH%20Auto%20Center." target="_blank" class="text-xl font-bold text-white hover:text-ruahBlueBright transition">(62) 99415-3486</a>
+                            </div>
+                        </div>
+
+                        <!-- Contact Item 2 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl shrink-0 border border-ruahBlueBright/30">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Localização</h3>
+                                <p class="text-lg font-bold text-white">Setor Padre Pelágio - Goianira - GO</p>
+                                <p class="text-xs text-gray-400 mt-1">Atendimento com hora marcada e segurança total.</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Item 3 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-ruahBlue/20 text-ruahBlueBright flex items-center justify-center text-xl shrink-0 border border-ruahBlueBright/30">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Horário de Funcionamento</h3>
+                                <p class="text-base font-bold text-white">Segunda a Sexta: 08:00 - 18:00</p>
+                                <p class="text-xs text-gray-400">Sábado: Sob Agendamento VIP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/5562994153486?text=Olá,%20gostaria%20de%20agendar%20um%20atendimento%20VIP%20para%20minha%20caminhonete." target="_blank" class="w-full sm:w-auto bg-gradient-to-r from-ruahBlue to-ruahBlueBright text-white font-bold px-8 py-4 rounded-xl shadow-xl glow-blue glow-blue-hover transition inline-flex items-center justify-center gap-3 border border-ruahBlueBright/40">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Chamar no WhatsApp Agora</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Booking Card -->
+                <div class="glass-card p-8 sm:p-10 rounded-3xl border border-ruahBlue/30 space-y-6 shadow-2xl">
+                    <h3 class="text-2xl font-extrabold text-white">Pré-Agendamento Rápido</h3>
+                    <p class="text-xs text-gray-400">Preencha os dados abaixo para gerar sua mensagem de agendamento direta para o nosso WhatsApp.</p>
+                    
+                    <form id="whatsapp-form" onsubmit="enviarWhatsApp(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Seu Nome</label>
+                            <input type="text" id="nome-cliente" required placeholder="Ex: Roberto Carlos" class="w-full bg-black/60 border border-ruahBorder rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-ruahBlueBright transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Modelo da Caminhonete</label>
+                            <input type="text" id="modelo-carro" required placeholder="Ex: Amarok Highline / Hilux SRX" class="w-full bg-black/60 border border-ruahBorder rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-ruahBlueBright transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Serviço Desejado</label>
+                            <select id="servico-select" class="w-full bg-black/60 border border-ruahBorder rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-ruahBlueBright transition">
+                                <option value="Revisão Preventiva Completa">Revisão Preventiva Completa</option>
+                                <option value="Mecânica Geral & Motor">Mecânica Geral & Motor</option>
+                                <option value="Diagnóstico Eletrônico">Diagnóstico Eletrônico</option>
+                                <option value="Troca de Óleo e Fluidos">Troca de Óleo e Fluidos</option>
+                                <option value="Suspensão & Alinhamento 3D">Suspensão & Alinhamento 3D</option>
+                                <option value="Ar-Condicionado Automotivo">Ar-Condicionado Automotivo</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-ruahBlue to-ruahBlueBright hover:brightness-110 text-white font-extrabold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-base border border-ruahBlueBright/40">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Enviar Solicitação no WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-ruahBorder text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-ruahBlue/20 border border-ruahBlueBright/40 flex items-center justify-center text-ruahBlueBright font-black">R</div>
+                <div>
+                    <span class="text-white font-bold tracking-wider">RUAH AUTO CENTER</span>
+                    <p class="text-xs text-gray-500">Setor Padre Pelágio - Goianira - GO</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-xs text-gray-500">
+                <p>&copy; 2026 RUAH Auto Center. Todos os direitos reservados.</p>
+                <p class="mt-1">Qualidade, Confiança e Performance em Cada Detalhe.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // WhatsApp Form integration
+        function enviarWhatsApp(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome-cliente').value;
+            const modelo = document.getElementById('modelo-carro').value;
+            const servico = document.getElementById('servico-select').value;
+
+            const mensagem = `Olá, meu nome é *${nome}*. Tenho uma caminhonete *${modelo}* e gostaria de agendar/consultar orçamento para o serviço de *${servico}*.`;
+            const url = `https://wa.me/5562994153486?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
